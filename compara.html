@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Compara · PTG</title>
+<meta name="description" content="Spread del dólar frente a la TRM, y FIC frente a CDT, con supervisión y costos en la misma pantalla.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23111827'/%3E%3Cpath d='M12 9l11 7-11 7z' fill='%2310B981'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body data-page="compara">
+<a class="skip-link" href="#main">Saltar al contenido</a>
+<header id="site-header"></header>
+
+<main id="main" class="container">
+  <p class="kicker">Compara</p>
+  <h1>El costo real, en una sola pantalla</h1>
+  <p class="lead">Mismo dato, misma referencia y la supervisión de cada entidad a la vista. PTG no dice cuál elegir.</p>
+
+  <div class="tabs" role="tablist" aria-label="Qué comparar" style="margin-top:24px">
+    <button class="tab" role="tab" id="tab-dolar" aria-controls="panel-dolar" aria-selected="true">Dólar vs TRM</button>
+    <button class="tab" role="tab" id="tab-fic" aria-controls="panel-fic" aria-selected="false" tabindex="-1">FIC o CDT</button>
+  </div>
+
+  <!-- ===== Dólar ===== -->
+  <section class="tab-panel" id="panel-dolar" role="tabpanel" aria-labelledby="tab-dolar">
+    <!-- Dos referencias en la misma pantalla -->
+    <div class="grid grid-3" style="margin-top:22px">
+      <article class="card card-dark">
+        <div class="metric-label">Referencia · TRM</div>
+        <div class="metric-value" id="d-trm">—</div>
+        <div id="d-trm-sello"></div>
+      </article>
+      <article class="card">
+        <div class="metric-label">Precio retail · rango de venta</div>
+        <div class="metric-value" id="d-retail">—</div>
+        <p class="sello"><span class="sello-ej">Dato de ejemplo</span><span><b>Fuente:</b> entidades simuladas</span><span id="d-retail-corte"></span></p>
+      </article>
+      <article class="card">
+        <div class="field">
+          <label for="d-monto">¿Cuántos dólares quieres cambiar?</label>
+          <div class="input-money"><span>USD</span><input class="input" id="d-monto" type="number" inputmode="numeric" min="1" max="100000" step="1" value="500"></div>
+        </div>
+        <p class="muted small" style="margin:10px 0 0">Los costos se recalculan con este monto.</p>
+      </article>
+    </div>
+
+    <div class="callout callout-info" style="margin-top:16px">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5h.01"/></svg>
+      <p><b>No es una oferta.</b> Son precios de ejemplo de entidades simuladas para aprender a comparar. Confirma siempre el precio final con la entidad. <a href="metodologia.html#spread">Cómo se calcula</a></p>
+    </div>
+
+    <div class="cmp-toolbar">
+      <h2 style="margin:0;font-size:22px">Spread por entidad</h2>
+      <div class="field" style="min-width:200px">
+        <label for="d-orden">Ordenar por</label>
+        <select class="select" id="d-orden">
+          <option value="nombre">Nombre (A–Z)</option>
+          <option value="spread">Spread (menor a mayor)</option>
+          <option value="vigilada">Vigiladas primero</option>
+        </select>
+      </div>
+    </div>
+    <div class="cmp-list" id="d-lista" aria-live="polite"></div>
+  </section>
+
+  <!-- ===== FIC o CDT ===== -->
+  <section class="tab-panel" id="panel-fic" role="tabpanel" aria-labelledby="tab-fic" hidden>
+    <div class="grid grid-2" style="margin-top:22px;align-items:stretch">
+      <article class="card">
+        <div class="field">
+          <label for="f-monto">¿Cuánto dinero quieres poner?</label>
+          <div class="input-money"><span>COP</span><input class="input" id="f-monto" type="number" inputmode="numeric" min="100000" step="100000" value="1000000"></div>
+        </div>
+        <p class="muted small" style="margin:10px 0 0">Con este monto calculamos cuánto se queda el fondo por comisión en un año.</p>
+      </article>
+      <article class="card card-dark">
+        <h3 style="margin:0 0 6px">La diferencia clave</h3>
+        <p style="margin:0">El <b>CDT</b> pacta una tasa desde el inicio. El <b>FIC</b> muestra una rentabilidad histórica que no está garantizada y cobra comisión de administración.</p>
+      </article>
+    </div>
+
+    <div class="callout callout-info" style="margin-top:16px">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5h.01"/></svg>
+      <p><b>No es una oferta.</b> Tasas de ejemplo de entidades simuladas. La rentabilidad pasada de un fondo no garantiza la futura. <a href="metodologia.html#fic-cdt">Cómo se compara</a></p>
+    </div>
+
+    <div class="cmp-toolbar">
+      <h2 style="margin:0;font-size:22px">FIC y CDT lado a lado</h2>
+      <p class="sello" id="f-sello" style="margin:0"></p>
+    </div>
+    <div class="cmp-list" id="f-lista" aria-live="polite"></div>
+  </section>
+</main>
+
+<footer id="site-footer"></footer>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/perfil.js"></script>
+<script src="assets/js/layout.js"></script>
+<script src="assets/js/compara.js"></script>
+</body>
+</html>

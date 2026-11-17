@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mercado · PTG</title>
+<meta name="description" content="La TRM con hora y fuente, y un tablero básico de indicadores. Sin operar.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23111827'/%3E%3Cpath d='M12 9l11 7-11 7z' fill='%2310B981'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body data-page="mercado">
+<a class="skip-link" href="#main">Saltar al contenido</a>
+<header id="site-header"></header>
+
+<main id="main" class="container">
+  <p class="kicker">Mercado</p>
+  <h1>El tablero, sin operar</h1>
+  <p class="lead">Los números de referencia de hoy, cada uno con su fuente y su hora. Aquí se mira; no se compra ni se vende.</p>
+
+  <section class="grid grid-2" style="margin-top:28px;align-items:stretch">
+    <!-- TRM con hora y fuente -->
+    <article class="card card-dark rise" aria-labelledby="trm-t">
+      <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;align-items:center">
+        <h2 id="trm-t" style="font-size:16px;margin:0;font-weight:600">TRM · Tasa Representativa del Mercado</h2>
+        <span class="chip chip-info">Referencia mayorista</span>
+      </div>
+      <div class="metric-value" id="trm-valor" style="margin-top:14px">—</div>
+      <div id="trm-sello"></div>
+    </article>
+
+    <!-- Marca TRM distinta del retail -->
+    <article class="card rise rise-2" aria-labelledby="retail-t">
+      <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;align-items:center">
+        <h2 id="retail-t" style="font-size:16px;margin:0;font-weight:600">Precio de venta al público (retail)</h2>
+        <span class="chip chip-warn">No es la TRM</span>
+      </div>
+      <div class="metric-value" id="retail-valor" style="margin-top:14px">—</div>
+      <p class="sello"><span class="sello-ej">Dato de ejemplo</span><span><b>Fuente:</b> entidades simuladas</span><span id="retail-corte"></span></p>
+    </article>
+  </section>
+
+  <div class="callout callout-warn" style="margin-top:16px">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4l9 16H3z"/><path d="M12 10v4M12 17h.01"/></svg>
+    <p><b>La TRM es una referencia. No es el precio al que te venden dólares.</b> Cada entidad suma su margen (spread) sobre la TRM. <a href="aprende.html?p=trm">¿Por qué?</a></p>
+  </div>
+
+  <!-- Tablero básico -->
+  <section class="section" aria-labelledby="tablero-t">
+    <h2 id="tablero-t">Tablero básico</h2>
+    <div class="grid grid-3" id="tablero"></div>
+  </section>
+
+  <section class="section">
+    <div class="card" style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between">
+      <div>
+        <p class="kicker" style="margin:0">Siguiente paso</p>
+        <h3 style="margin:4px 0 0">¿Cuánto te cuesta cambiar dólares por encima de la TRM?</h3>
+      </div>
+      <a class="btn btn-primary" href="compara.html?tab=dolar">Comparar el spread
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </section>
+</main>
+
+<footer id="site-footer"></footer>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/perfil.js"></script>
+<script src="assets/js/layout.js"></script>
+<script src="assets/js/mercado.js"></script>
+</body>
+</html>

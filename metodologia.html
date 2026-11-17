@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Metodología · PTG</title>
+<meta name="description" content="Cómo calcula PTG el spread, cómo compara FIC y CDT, de dónde salen los datos y qué no hace PTG.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23111827'/%3E%3Cpath d='M12 9l11 7-11 7z' fill='%2310B981'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body data-page="metodologia">
+<a class="skip-link" href="#main">Saltar al contenido</a>
+<header id="site-header"></header>
+
+<main id="main" class="container">
+  <p class="kicker">Confianza</p>
+  <h1>Metodología y fuentes</h1>
+  <p class="lead">Así calculamos cada número que ves en PTG. Si no puedes ver de dónde sale un dato, no deberías decidir con él.</p>
+
+  <nav class="toc" aria-label="En esta página" style="margin-top:20px">
+    <a href="#no-opera">Qué no hace PTG</a>
+    <a href="#spread">Spread del dólar</a>
+    <a href="#fic-cdt">FIC y CDT</a>
+    <a href="#fuentes">Fuentes y corte</a>
+    <a href="#modelo">Cómo gana PTG</a>
+  </nav>
+
+  <section class="section" id="no-opera">
+    <h2>Qué no hace PTG</h2>
+    <div class="grid grid-3">
+      <div class="card"><h3>No custodia</h3><p class="muted" style="margin:0">PTG nunca recibe, guarda ni mueve tu dinero. No hay saldo en PTG.</p></div>
+      <div class="card"><h3>No opera</h3><p class="muted" style="margin:0">No compras, vendes ni abres productos en PTG. Eso ocurre en la entidad, con su registro (KYC) y sus condiciones.</p></div>
+      <div class="card"><h3>No recomienda</h3><p class="muted" style="margin:0">No decimos cuál es "la mejor". Ordenamos y mostramos los números; la decisión es tuya.</p></div>
+    </div>
+  </section>
+
+  <section class="section" id="spread">
+    <h2>Cómo calculamos el spread del dólar</h2>
+    <p>Tomamos el precio de venta al público que publica cada entidad y lo comparamos con la TRM del mismo día. La TRM es la única referencia para todas las entidades.</p>
+    <p class="formula">Spread % = (Precio de venta − TRM) ÷ TRM × 100</p>
+    <p class="formula" style="margin-top:8px">Costo sobre la TRM = (Precio de venta − TRM) × USD que cambias</p>
+    <p class="muted" style="margin-top:14px" id="ejemplo-spread"></p>
+    <div class="callout callout-info" style="margin-top:12px">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5h.01"/></svg>
+      <p>No incluimos costos que la entidad cobre aparte (envío, retiro, 4×1000). Por eso el costo real puede ser mayor al que mostramos.</p>
+    </div>
+  </section>
+
+  <section class="section" id="fic-cdt">
+    <h2>Cómo comparamos FIC y CDT</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Dato</th><th>CDT</th><th>FIC</th></tr></thead>
+        <tbody>
+          <tr><td>Tasa que mostramos</td><td>Tasa pactada efectiva anual (E.A.)</td><td>Rentabilidad histórica de 12 meses E.A., neta de comisión. No garantizada.</td></tr>
+          <tr><td>Comisión de administración</td><td>No aplica</td><td>Porcentaje anual que cobra la sociedad administradora</td></tr>
+          <tr><td>Costo de la comisión en pesos</td><td>$0</td><td>Monto × comisión anual (aproximado a un año)</td></tr>
+          <tr><td>Liquidez</td><td>Hasta el vencimiento</td><td>A la vista o con pacto de permanencia</td></tr>
+          <tr><td>Seguro de depósito</td><td>Fogafín, si es de un banco vigilado</td><td>No aplica: el riesgo es del inversionista</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="muted small" style="margin-top:12px">Una tasa pactada y una rentabilidad histórica no son la misma cosa. Las mostramos juntas para que se vea esa diferencia, no para decir cuál conviene.</p>
+  </section>
+
+  <section class="section" id="fuentes">
+    <h2>Fuentes y fecha de corte</h2>
+    <p>En este prototipo todos los datos son <b>estáticos y de ejemplo</b>, con corte al <span id="corte"></span>. En una versión real se tomarían de las fuentes oficiales con la hora de consulta.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Dato</th><th>Fuente</th><th>Corte</th></tr></thead>
+        <tbody id="tabla-fuentes"></tbody>
+      </table>
+    </div>
+    <div class="callout callout-warn" style="margin-top:14px">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4l9 16H3z"/><path d="M12 10v4M12 17h.01"/></svg>
+      <p><b>Entidades simuladas.</b> Los nombres de entidades son ficticios a propósito, para no atribuir precios inventados a entidades reales. La etiqueta "vigilada" indica si estaría supervisada por la Superintendencia Financiera de Colombia (SFC).</p>
+    </div>
+  </section>
+
+  <section class="section" id="modelo">
+    <h2>Cómo gana dinero PTG</h2>
+    <p>El usuario no paga. PTG recibe una comisión por referido de las entidades aliadas <b>con licencia</b> cuando una persona llega desde PTG y abre un producto. Esa comisión se muestra siempre en la ficha de la entidad y no cambia el precio que te cobran.</p>
+    <p class="muted">Las entidades que no son aliadas aparecen solo como dato de comparación: PTG no recibe nada de ellas y no ofrece salida hacia ellas.</p>
+  </section>
+</main>
+
+<footer id="site-footer"></footer>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/perfil.js"></script>
+<script src="assets/js/layout.js"></script>
+<script>
+(function () {
+  var D = window.PTG_DATA, PTG = window.PTG;
+  document.getElementById('corte').textContent = PTG.fecha(D.corte.fecha);
+
+  var casa = PTG.entidad('casa-centro');
+  var dif = casa.venta - D.trm.valor;
+  document.getElementById('ejemplo-spread').textContent =
+    'Ejemplo: con TRM de ' + PTG.cop(D.trm.valor) + ' y precio de venta de ' + PTG.cop(casa.venta) +
+    ', el spread es ' + PTG.pct(PTG.spread(casa.venta)) + '. Si cambias USD 500, pagas ' +
+    PTG.cop(dif * 500) + ' por encima de la referencia.';
+
+  var filas = [[D.trm.nombre, D.trm.fuente, D.trm]];
+  D.indicadores.forEach(function (i) { filas.push([i.nombre, i.fuente, i]); });
+  filas.push(['Precios de venta del dólar', 'Cada entidad (simulada)', { fecha: D.corte.fecha, hora: D.corte.hora }]);
+  filas.push(['Tasas de CDT y FIC', 'Cada entidad (simulada)', { fecha: D.corte.fecha, hora: D.corte.hora }]);
+  document.getElementById('tabla-fuentes').innerHTML = filas.map(function (f) {
+    return '<tr><td>' + PTG.esc(f[0]) + '</td><td>' + PTG.esc(f[1]) + '</td><td>' +
+      PTG.fecha(f[2].fecha) + (f[2].hora ? ' · ' + PTG.esc(f[2].hora) : '') + '</td></tr>';
+  }).join('');
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PTG · Play The Game</title>
+<meta name="description" content="PTG informa, compara y conecta. Aprende las reglas del dinero, mira el tablero y elige con quién jugar. Prototipo educativo.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23111827'/%3E%3Cpath d='M12 9l11 7-11 7z' fill='%2310B981'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body data-page="inicio">
+<a class="skip-link" href="#main">Saltar al contenido</a>
+<header id="site-header"></header>
+
+<main id="main" class="container">
+  <!-- Hero -->
+  <section class="hero">
+    <div class="rise">
+      <p class="kicker">Educación financiera · Colombia</p>
+      <h1>Aprende las reglas. Mira el tablero. Elige con quién jugar.</h1>
+      <p class="lead">PTG te explica una idea a la vez, te muestra el costo real con fuente y hora, y te deja comparar entidades en la misma pantalla. La decisión es tuya.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="aprende.html">Empezar a aprender</a>
+        <a class="btn btn-ghost" href="compara.html">Comparar el dólar</a>
+      </div>
+    </div>
+
+    <!-- E6: regla de no custodia -->
+    <aside class="card card-dark rise rise-2" id="no-opera" aria-labelledby="no-opera-t">
+      <p class="kicker" style="color:#6EE7B7">La regla de PTG</p>
+      <h2 id="no-opera-t" style="font-size:24px">Informa, compara y conecta</h2>
+      <ul class="rule-list" style="margin-top:16px">
+        <li><span class="ico ico-yes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg></span><div><b>Informa</b> con fuente y hora en cada dato.</div></li>
+        <li><span class="ico ico-yes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg></span><div><b>Compara</b> costos y supervisión lado a lado.</div></li>
+        <li><span class="ico ico-yes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg></span><div><b>Conecta</b> con la entidad, con la comisión de PTG a la vista.</div></li>
+        <li><span class="ico ico-no"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></span><div><b>No custodia</b> tu dinero ni <b>ejecuta</b> operaciones.</div></li>
+        <li><span class="ico ico-no"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></span><div><b>No recomienda</b>: muestra los números y tú decides.</div></li>
+      </ul>
+      <a href="metodologia.html" class="small" style="color:#93C5FD;display:inline-block;margin-top:16px">Cómo comparamos y de dónde salen los datos</a>
+    </aside>
+  </section>
+
+  <!-- Problema -->
+  <section class="section">
+    <div class="grid grid-3">
+      <article class="card rise">
+        <p class="kicker">El problema</p>
+        <h3>Ves el dólar, no ves el costo</h3>
+        <p class="muted" style="margin:0">Cobras, gastas, te endeudas y miras el dólar sin ver la regla ni el costo real. La TRM no es el precio que te cobran.</p>
+      </article>
+      <article class="card rise rise-2" id="trm-snapshot" aria-live="polite">
+        <p class="kicker">Referencia de hoy</p>
+        <div class="metric-label">TRM</div>
+        <div class="metric-value" id="trm-valor">—</div>
+        <div id="trm-sello"></div>
+      </article>
+      <article class="card rise rise-3">
+        <p class="kicker">En la calle</p>
+        <h3>El precio retail es otro</h3>
+        <p class="muted" style="margin:0" id="retail-txt">Las entidades venden por encima de la TRM. Esa diferencia es el spread, y lo pagas tú.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Proceso -->
+  <section class="section" aria-labelledby="como-t">
+    <p class="kicker">Cómo funciona</p>
+    <h2 id="como-t">Cinco pasos, un hilo</h2>
+    <ol class="steps" style="margin-top:20px">
+      <li><h3>Aprende</h3><p>Una idea: la TRM, el spread o el costo de un fondo.</p><a href="aprende.html">Ir a Aprende</a></li>
+      <li><h3>Mercado</h3><p>Consulta la TRM con hora y fuente.</p><a href="mercado.html">Ir a Mercado</a></li>
+      <li><h3>Compara</h3><p>Spread, costos y supervisión en la misma pantalla.</p><a href="compara.html">Ir a Compara</a></li>
+      <li><h3>Elige</h3><p>Decide con el número visible. PTG no elige por ti.</p></li>
+      <li><h3>Conecta</h3><p>Si sigues, el registro y el dinero ocurren en la entidad, no en PTG.</p></li>
+    </ol>
+  </section>
+
+  <!-- E1: acceso demo -->
+  <section class="section" id="demo" aria-labelledby="demo-t">
+    <div class="card" id="demo-box">
+      <div class="grid grid-2" style="align-items:center">
+        <div>
+          <p class="kicker">Acceso demo</p>
+          <h2 id="demo-t">Entra sin registrarte</h2>
+          <p class="muted">La demo guarda tu nivel y tu racha en este navegador. No pedimos correo, documento ni contraseña. Puedes usar todo PTG sin entrar.</p>
+        </div>
+        <div id="demo-form-wrap"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="site-footer"></footer>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/perfil.js"></script>
+<script src="assets/js/layout.js"></script>
+<script src="assets/js/inicio.js"></script>
+</body>
+</html>
